@@ -44,4 +44,27 @@ const bookStore = {
 }
 
 // Write your code here!
+const bookStoreTitle = document.getElementById("header")
+bookStoreTitle.textContent = bookStore.name
 
+const book = bookStore.books.forEach(b => {
+    const bookContainer = document.createElement("li")
+    const bookTitle = document.createElement("h3")
+    bookTitle.textContent = b.title
+
+    const bookAuthor = document.createElement("p")
+    bookAuthor.textContent = b.author
+
+    const bookImage = document.createElement("img")
+    bookImage.src = b.imageUrl
+
+    bookContainer.append(bookTitle, bookAuthor, bookImage)
+
+    const bookList = document.getElementById("book-list")
+    bookList.append(bookContainer)
+
+    const deleteThis = document.getElementById("delete-this")
+    deleteThis.addEventListener('click', () => {
+        bookList.remove(bookContainer)
+    })
+})
